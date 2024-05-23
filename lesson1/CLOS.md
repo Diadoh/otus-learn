@@ -17,4 +17,4 @@
 | Hostname   |Interface | IP/Mask  | Description |
 | ----------- | ----------- |-----------|-----------|
 | DC1-Leaf1   | Lo1   |10.0.1.0/32    |Loopback0|
-| Ячейка 3    | Ячейка 4   |Ячейка 4   |Ячейка 4|
+| DC1-Leaf1   | Eth1   |10.2.1.1/31  |Link to DC1-Spine1|
