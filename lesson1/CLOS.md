@@ -38,8 +38,8 @@
 ![123](/lesson1/DC-Topology.png)
 
 #### Конфигурация устройств:
-##### DC1-Leaf-01
-##### DC1-Leaf-02
-##### DC1-Leaf-03
-##### DC1-Spine-01
-##### DC1-Spine-01
+- ##### DC1-Leaf-01
+- ##### DC1-Leaf-02
+- ##### DC1-Leaf-03
+- ##### DC1-Spine-01
+- ##### DC1-Spine-01
