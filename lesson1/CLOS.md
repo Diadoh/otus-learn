@@ -38,8 +38,56 @@
 ![123](/lesson1/DC-Topology.png)
 
 #### Конфигурация устройств:
-- ##### DC1-Leaf-01
-- ##### DC1-Leaf-02
-- ##### DC1-Leaf-03
-- ##### DC1-Spine-01
-- ##### DC1-Spine-01
+- ##### DC1-Leaf-01:
+! Command: show running-config
+! device: DC1-Leaf-01 (vEOS-lab, EOS-4.29.2F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model ribd
+!
+hostname DC1-Leaf-01
+!
+spanning-tree mode mstp
+!
+interface Ethernet1
+   description ### Link to DC1-Spine-01 int Eth1 ###
+   no switchport
+   ip address 10.2.1.0/31
+!
+interface Ethernet2
+   description ### Link To DC1-Spine2 int Eth2 ###
+   no switchport
+   ip address 10.2.2.0/31
+!
+interface Ethernet3
+!
+interface Ethernet4
+!
+interface Ethernet5
+!
+interface Ethernet6
+!
+interface Ethernet7
+!
+interface Ethernet8
+!
+interface Ethernet9
+!
+interface Loopback1
+   ip address 10.1.1.0/32
+!
+interface Management1
+!
+ip routing
+!
+end
+
+- ##### DC1-Leaf-02:
+- ##### DC1-Leaf-03:
+- ##### DC1-Spine-01:
+- ##### DC1-Spine-01:
