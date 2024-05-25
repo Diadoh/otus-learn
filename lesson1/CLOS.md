@@ -40,7 +40,7 @@
 #### Конфигурация устройств:
 - ##### DC1-Leaf-01:
 ----------------------------
-! Command: show running-config
+'''! Command: show running-config
 ! device: DC1-Leaf-01 (vEOS-lab, EOS-4.29.2F)
 !
 ! boot system flash:/vEOS-lab.swi
@@ -86,7 +86,7 @@ interface Management1
 !
 ip routing
 !
-end
+end'''
 
 - ##### DC1-Leaf-02:
 - ##### DC1-Leaf-03:
