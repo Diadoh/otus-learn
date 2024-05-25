@@ -40,6 +40,7 @@
 #### Конфигурация устройств:
 ----------------------------
 - ##### DC1-Leaf-01:
+
     ! Command: show running-config
     ! device: DC1-Leaf-01 (vEOS-lab, EOS-4.29.2F)
     !
@@ -87,8 +88,10 @@
     ip routing
     !
     end
+  
 ----------------------------
 - ##### DC1-Leaf-02:
+
     ! Command: show running-config
     ! device: DC1-Leaf-02 (vEOS-lab, EOS-4.29.2F)
     !
@@ -135,8 +138,10 @@
     ip routing
     !
     end
+  
 ----------------------------
 - ##### DC1-Leaf-03:
+
     ! Command: show running-config
     ! device: DC1-Leaf-03 (vEOS-lab, EOS-4.29.2F)
     !
@@ -183,8 +188,10 @@
     ip routing
     !
     end
+  
 ----------------------------
 - ##### DC1-Spine-01:
+  
     ! Command: show running-config
     ! device: DC1-Spine-01 (vEOS-lab, EOS-4.29.2F)
     !
@@ -236,8 +243,10 @@
     ip routing
     !
     end
+  
 ----------------------------
 - ##### DC1-Spine-01:
+
     ! Command: show running-config
     ! device: DC1-Spine-02 (vEOS-lab, EOS-4.29.2F)
     !
@@ -289,4 +298,5 @@
     ip routing
     !
     end
+  
 ----------------------------
