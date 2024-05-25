@@ -34,5 +34,12 @@
 | DC1-Spine-02   | Eth2   |10.2.2.3/31  |Link to DC1-Leaf-02|
 | DC1-Spine-02   | Eth3   |10.2.2.5/31  |Link to DC1-Leaf-03|
 
-#### Структурная схема сети
+#### Структурная схема сети:
 ![123](/lesson1/DC-Topology.png)
+
+#### Конфигурация устройств:
+##### DC1-Leaf-01
+##### DC1-Leaf-02
+##### DC1-Leaf-03
+##### DC1-Spine-01
+##### DC1-Spine-01
