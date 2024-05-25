@@ -35,4 +35,4 @@
 | DC1-Spine-02   | Eth3   |10.2.2.5/31  |Link to DC1-Leaf-03|
 
 #### Структурная схема сети
-!(/DC-Topology.png)
+![](/DC-Topology.png)
