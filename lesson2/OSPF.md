@@ -27,7 +27,7 @@
 | DC1-Spine-02   | Eth3   |10.2.2.5/31  |Link to DC1-Leaf-03|
 
 #### Структурная схема сети:
-![123](/lesson1/DC-Topology_OSPF.png)
+![123](/lesson2/DC-Topology_OSPF.png)
 
 #### Конфигурация устройств:
 ----------------------------
