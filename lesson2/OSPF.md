@@ -404,6 +404,7 @@ Neighbor ID     Instance VRF      Pri State                  Dead Time   Address
 10.1.3.0        1        default  0   FULL                   00:00:30    10.2.2.4        Ethernet3
 ```
 - ##### DC1-Leaf-01:
+###### Ping DC1-Leaf-02:
 ```
 DC1-Leaf-01#ping 10.1.2.0
 PING 10.1.2.0 (10.1.2.0) 72(100) bytes of data.
@@ -416,6 +417,9 @@ PING 10.1.2.0 (10.1.2.0) 72(100) bytes of data.
 --- 10.1.2.0 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 44ms
 rtt min/avg/max/mdev = 77.162/88.535/100.035/7.718 ms, pipe 5, ipg/ewma 11.127/86.626 ms
+```
+###### Ping DC1-Leaf-03:
+```
 DC1-Leaf-01#ping 10.1.3.0
 PING 10.1.3.0 (10.1.3.0) 72(100) bytes of data.
 80 bytes from 10.1.3.0: icmp_seq=1 ttl=63 time=44.7 ms
