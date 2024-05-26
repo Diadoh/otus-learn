@@ -433,6 +433,7 @@ PING 10.1.3.0 (10.1.3.0) 72(100) bytes of data.
 rtt min/avg/max/mdev = 21.352/35.588/44.703/8.183 ms, pipe 4, ipg/ewma 19.551/39.683 ms
 ```
 - ##### DC1-Leaf-02:
+###### Ping DC1-Leaf-01: 
  ```
 DC1-Leaf-02#ping 10.1.1.0
 PING 10.1.1.0 (10.1.1.0) 72(100) bytes of data.
@@ -445,6 +446,9 @@ PING 10.1.1.0 (10.1.1.0) 72(100) bytes of data.
 --- 10.1.1.0 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 43ms
 rtt min/avg/max/mdev = 44.563/52.103/58.233/4.891 ms, pipe 5, ipg/ewma 10.900/54.807 ms
+```
+###### Ping DC1-Leaf-03:
+```
 DC1-Leaf-02#ping 10.1.3.0
 PING 10.1.3.0 (10.1.3.0) 72(100) bytes of data.
 80 bytes from 10.1.3.0: icmp_seq=1 ttl=63 time=75.5 ms
@@ -458,6 +462,7 @@ PING 10.1.3.0 (10.1.3.0) 72(100) bytes of data.
 rtt min/avg/max/mdev = 56.166/65.834/75.553/6.611 ms, pipe 5, ipg/ewma 10.889/70.218 ms
 ```
 - ##### DC1-Leaf-03:
+###### Ping DC1-Leaf-01:
 ```
 DC1-Leaf-03#ping 10.1.1.0
 PING 10.1.1.0 (10.1.1.0) 72(100) bytes of data.
@@ -470,6 +475,9 @@ PING 10.1.1.0 (10.1.1.0) 72(100) bytes of data.
 --- 10.1.1.0 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 116ms
 rtt min/avg/max/mdev = 25.471/34.980/40.989/5.385 ms, pipe 3, ipg/ewma 29.029/34.118 ms
+```
+###### Ping DC1-Leaf-02:
+```
 DC1-Leaf-03#ping 10.1.2.0
 PING 10.1.2.0 (10.1.2.0) 72(100) bytes of data.
 80 bytes from 10.1.2.0: icmp_seq=1 ttl=63 time=89.7 ms
