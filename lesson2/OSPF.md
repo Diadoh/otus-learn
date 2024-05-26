@@ -389,7 +389,92 @@ end
 ----------------------------
 #### Проверка OSPF соседства и IP связности:
 - ##### DC1-Spine-01:
+ ```
+DC1-Spine-01#sh ip ospf neighbor
+Neighbor ID     Instance VRF      Pri State                  Dead Time   Address         Interface
+10.1.1.0        1        default  0   FULL                   00:00:35    10.2.1.0        Ethernet1
+10.1.2.0        1        default  0   FULL                   00:00:38    10.2.1.2        Ethernet2
+10.1.3.0        1        default  0   FULL                   00:00:30    10.2.1.4        Ethernet3
+```
 - ##### DC1-Spine-02:
+```
+  Neighbor ID     Instance VRF      Pri State                  Dead Time   Address         Interface
+10.1.1.0        1        default  0   FULL                   00:00:29    10.2.2.0        Ethernet1
+10.1.2.0        1        default  0   FULL                   00:00:31    10.2.2.2        Ethernet2
+10.1.3.0        1        default  0   FULL                   00:00:30    10.2.2.4        Ethernet3
+```
 - ##### DC1-Leaf-01:
+```
+DC1-Leaf-01#ping 10.1.2.0
+PING 10.1.2.0 (10.1.2.0) 72(100) bytes of data.
+80 bytes from 10.1.2.0: icmp_seq=1 ttl=63 time=83.6 ms
+80 bytes from 10.1.2.0: icmp_seq=2 ttl=63 time=77.1 ms
+80 bytes from 10.1.2.0: icmp_seq=3 ttl=63 time=91.3 ms
+80 bytes from 10.1.2.0: icmp_seq=4 ttl=63 time=90.5 ms
+80 bytes from 10.1.2.0: icmp_seq=5 ttl=63 time=100 ms
+
+--- 10.1.2.0 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 44ms
+rtt min/avg/max/mdev = 77.162/88.535/100.035/7.718 ms, pipe 5, ipg/ewma 11.127/86.626 ms
+DC1-Leaf-01#ping 10.1.3.0
+PING 10.1.3.0 (10.1.3.0) 72(100) bytes of data.
+80 bytes from 10.1.3.0: icmp_seq=1 ttl=63 time=44.7 ms
+80 bytes from 10.1.3.0: icmp_seq=2 ttl=63 time=33.2 ms
+80 bytes from 10.1.3.0: icmp_seq=3 ttl=63 time=42.1 ms
+80 bytes from 10.1.3.0: icmp_seq=4 ttl=63 time=36.5 ms
+80 bytes from 10.1.3.0: icmp_seq=5 ttl=63 time=21.3 ms
+
+--- 10.1.3.0 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 78ms
+rtt min/avg/max/mdev = 21.352/35.588/44.703/8.183 ms, pipe 4, ipg/ewma 19.551/39.683 ms
+```
 - ##### DC1-Leaf-02:
+ ```
+DC1-Leaf-02#ping 10.1.1.0
+PING 10.1.1.0 (10.1.1.0) 72(100) bytes of data.
+80 bytes from 10.1.1.0: icmp_seq=1 ttl=63 time=58.2 ms
+80 bytes from 10.1.1.0: icmp_seq=2 ttl=63 time=56.5 ms
+80 bytes from 10.1.1.0: icmp_seq=3 ttl=63 time=51.1 ms
+80 bytes from 10.1.1.0: icmp_seq=4 ttl=63 time=49.9 ms
+80 bytes from 10.1.1.0: icmp_seq=5 ttl=63 time=44.5 ms
+
+--- 10.1.1.0 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 43ms
+rtt min/avg/max/mdev = 44.563/52.103/58.233/4.891 ms, pipe 5, ipg/ewma 10.900/54.807 ms
+DC1-Leaf-02#ping 10.1.3.0
+PING 10.1.3.0 (10.1.3.0) 72(100) bytes of data.
+80 bytes from 10.1.3.0: icmp_seq=1 ttl=63 time=75.5 ms
+80 bytes from 10.1.3.0: icmp_seq=2 ttl=63 time=69.2 ms
+80 bytes from 10.1.3.0: icmp_seq=3 ttl=63 time=66.6 ms
+80 bytes from 10.1.3.0: icmp_seq=4 ttl=63 time=61.5 ms
+80 bytes from 10.1.3.0: icmp_seq=5 ttl=63 time=56.1 ms
+
+--- 10.1.3.0 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 43ms
+rtt min/avg/max/mdev = 56.166/65.834/75.553/6.611 ms, pipe 5, ipg/ewma 10.889/70.218 ms
+```
 - ##### DC1-Leaf-03:
+```
+DC1-Leaf-03#ping 10.1.1.0
+PING 10.1.1.0 (10.1.1.0) 72(100) bytes of data.
+80 bytes from 10.1.1.0: icmp_seq=1 ttl=63 time=33.8 ms
+80 bytes from 10.1.1.0: icmp_seq=2 ttl=63 time=39.1 ms
+80 bytes from 10.1.1.0: icmp_seq=3 ttl=63 time=40.9 ms
+80 bytes from 10.1.1.0: icmp_seq=4 ttl=63 time=35.4 ms
+80 bytes from 10.1.1.0: icmp_seq=5 ttl=63 time=25.4 ms
+
+--- 10.1.1.0 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 116ms
+rtt min/avg/max/mdev = 25.471/34.980/40.989/5.385 ms, pipe 3, ipg/ewma 29.029/34.118 ms
+DC1-Leaf-03#ping 10.1.2.0
+PING 10.1.2.0 (10.1.2.0) 72(100) bytes of data.
+80 bytes from 10.1.2.0: icmp_seq=1 ttl=63 time=89.7 ms
+80 bytes from 10.1.2.0: icmp_seq=2 ttl=63 time=83.0 ms
+80 bytes from 10.1.2.0: icmp_seq=3 ttl=63 time=132 ms
+80 bytes from 10.1.2.0: icmp_seq=4 ttl=63 time=130 ms
+80 bytes from 10.1.2.0: icmp_seq=5 ttl=63 time=130 ms
+
+--- 10.1.2.0 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 49ms
+rtt min/avg/max/mdev = 83.059/113.140/132.578/21.941 ms, pipe 5, ipg/ewma 12.351/102.769 ms
+```
