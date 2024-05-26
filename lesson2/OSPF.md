@@ -398,10 +398,11 @@ Neighbor ID     Instance VRF      Pri State                  Dead Time   Address
 ```
 - ##### DC1-Spine-02:
 ```
-  Neighbor ID     Instance VRF      Pri State                  Dead Time   Address         Interface
+DC1-Spine-02#sh ip ospf neighbor
+Neighbor ID     Instance VRF      Pri State                  Dead Time   Address         Interface
 10.1.1.0        1        default  0   FULL                   00:00:29    10.2.2.0        Ethernet1
-10.1.2.0        1        default  0   FULL                   00:00:31    10.2.2.2        Ethernet2
-10.1.3.0        1        default  0   FULL                   00:00:30    10.2.2.4        Ethernet3
+10.1.2.0        1        default  0   FULL                   00:00:32    10.2.2.2        Ethernet2
+10.1.3.0        1        default  0   FULL                   00:00:31    10.2.2.4        Ethernet3
 ```
 - ##### DC1-Leaf-01:
 ###### Ping DC1-Leaf-02:
