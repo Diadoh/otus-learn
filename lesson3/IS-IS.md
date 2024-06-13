@@ -26,7 +26,7 @@
 | DC1-Spine-02   | Eth2   |10.2.2.3/31  |Link to DC1-Leaf-02|
 | DC1-Spine-02   | Eth3   |10.2.2.5/31  |Link to DC1-Leaf-03|
 
-#### IS-IS Zone|System ID|Level|
+#### IS-IS - Zone|System ID|Level|:
 | Hostname   |Zone | System ID  | Level |
 | ----------- | ----------- |-----------|-----------|
 | DC1-Leaf-01   | 49.0001   |0100.1000.1000    |L1|
