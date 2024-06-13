@@ -26,15 +26,17 @@
 | DC1-Spine-02   | Eth2   |10.2.2.3/31  |Link to DC1-Leaf-02|
 | DC1-Spine-02   | Eth3   |10.2.2.5/31  |Link to DC1-Leaf-03|
 
-#### IS-IS Zone|System ID|Level
+#### IS-IS Zone|System ID|Level|
 | Hostname   |Zone | System ID  | Level |
 | ----------- | ----------- |-----------|-----------|
-| DC1-Leaf-01   | 49.0001   |0100.1001.0000    |L1|
+| DC1-Leaf-01   | 49.0001   |0100.1000.1000    |L1|
 | DC1-Leaf-02   | 49.0001   |0100.0100.2000    |L1|
-| DC1-Leaf-03   | 49.0001   |0100.0103.0000    |L1|
+| DC1-Leaf-03   | 49.0001   |0100.0100.3000    |L1|
+| DC1-Spine-01   | 49.0001  |0100.0000.1000    |L1/L2|
+| DC1-Spine-02   | 49.0001  |0100.0000.2000   |L1/L2|
 
 #### Структурная схема сети:
-![123](/lesson2/DC-Topology_OSPF.png)
+![123](/lesson3/DC-Topology_IS-IS.png)
 
 #### Конфигурация устройств:
 ----------------------------
