@@ -1347,5 +1347,41 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
                                  -                     -       -       0       i
  * >      RD: 65001:20 mac-ip aabb.cc00.b000
                                  -                     -       -       0       i
+```
+- ##### DC1-Leaf-01 VXLAN VTEP Peers
+```
+DC1-Leaf-01#show vxlan vtep detail
+Remote VTEPS for Vxlan1:
+
+VTEP           Learned Via         MAC Address Learning       Tunnel Type(s)
+-------------- ------------------- -------------------------- --------------
+10.1.2.0       control plane       control plane              flood
+10.1.3.0       control plane       control plane              flood
+
+```
+- ##### DC1-Leaf-02 VXLAN VTEP Peers
+```
+DC1-Leaf-02#show vxlan vtep detail
+Remote VTEPS for Vxlan1:
+
+VTEP           Learned Via         MAC Address Learning       Tunnel Type(s)
+-------------- ------------------- -------------------------- --------------
+10.1.1.0       control plane       control plane              flood
+10.1.3.0       control plane       control plane              flood
+
+Total number of remote VTEPS:  2
+
+```
+- ##### DC1-Leaf-03 VXLAN VTEP Peers
+```
+DC1-Leaf-03#show vxlan vtep detail
+Remote VTEPS for Vxlan1:
+
+VTEP           Learned Via         MAC Address Learning       Tunnel Type(s)
+-------------- ------------------- -------------------------- --------------
+10.1.1.0       control plane       control plane              flood
+10.1.2.0       control plane       control plane              flood
+
+Total number of remote VTEPS:  2
 
 ```
