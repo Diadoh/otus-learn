@@ -45,8 +45,9 @@
 
 #### Конфигурация устройств:
 ----------------------------
- <details>
+ 
 <summary> - ##### DC1-Leaf-01: </summary>
+<details>  
 ```
 ! Command: show running-config
 ! device: DC1-Leaf-01 (vEOS-lab, EOS-4.29.2F)
