@@ -45,7 +45,7 @@
 
 #### Конфигурация устройств:
 ----------------------------
-<details>
+ <details>
 <summary> - ##### DC1-Leaf-01: </summary>
 ```
 ! Command: show running-config
@@ -154,7 +154,8 @@ router ospf 1
 end
 
 ```
-</details>  
+</details>
+
 ----------------------------
 - ##### DC1-Leaf-02:
 ```
