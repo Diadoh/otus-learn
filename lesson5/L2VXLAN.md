@@ -45,7 +45,8 @@
 
 #### Конфигурация устройств:
 ----------------------------
-- ##### DC1-Leaf-01:
+<details>
+<summary> - ##### DC1-Leaf-01: <summary/>
 ```
 ! Command: show running-config
 ! device: DC1-Leaf-01 (vEOS-lab, EOS-4.29.2F)
@@ -152,7 +153,8 @@ router ospf 1
 !
 end
 
-```  
+```
+<details/>  
 ----------------------------
 - ##### DC1-Leaf-02:
 ```
