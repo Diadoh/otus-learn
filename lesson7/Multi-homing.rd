@@ -41,7 +41,7 @@
 
 
 #### Структурная схема сети:
-![123](/lesson7/DC-Topology_Multi-homing.png)
+![123](/lesson7/DC-Topology_Multihoming.png)
 
 #### Конфигурация устройств:
 ----------------------------
