@@ -938,7 +938,7 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 14/36/99 ms
 - ##### Балансировка на Client-2
 ![123](/lesson7/DC-Topology_Multihoming_wireshark2.png)
 
-- ##### ICMP Clinet-1 to other Clinets
+- ##### ICMP Clinet-2 to other Clinets
 ```
 Client-2#ping 10.0.10.101
 Type escape sequence to abort.
