@@ -692,8 +692,63 @@ end
 ----------------------------
 #### Проверка BGP EVPN таблицы, ARP, таблицы маршрутизации VRF:
 - ##### DC1-Leaf-01
-- ###### EVPN Route-Type 2
+- ###### EVPN Route-Type 4
 ```
+BGP routing table information for VRF default
+Router identifier 10.1.1.0, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >      RD: 10.1.1.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 -                     -       -       0       i
+ * >Ec    RD: 10.1.2.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.2.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ * >      RD: 10.1.1.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 -                     -       -       0       i
+ * >Ec    RD: 10.1.2.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.2.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+```
+- ###### EVPN Route-Type 1
+```
+BGP routing table information for VRF default
+Router identifier 10.1.1.0, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >      RD: 65001:10 auto-discovery 0 0010:aaaa:aaaa:aaaa:aaaa
+                                 -                     -       -       0       i
+ *        RD: 65001:10 auto-discovery 0 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *        RD: 65001:10 auto-discovery 0 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ * >      RD: 10.1.1.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 -                     -       -       0       i
+ * >Ec    RD: 10.1.2.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.2.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ * >      RD: 65001:20 auto-discovery 0 0020:aaaa:aaaa:aaaa:aaaa
+                                 -                     -       -       0       i
+ *        RD: 65001:20 auto-discovery 0 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *        RD: 65001:20 auto-discovery 0 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ * >      RD: 10.1.1.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 -                     -       -       0       i
+ * >Ec    RD: 10.1.2.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.2.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
 
 ```
 - ###### ARP
@@ -702,8 +757,55 @@ end
 ```
 
 - ##### DC1-Leaf-02
-- ###### EVPN Route-Type 2
+- ###### EVPN Route-Type 4
 ```
+BGP routing table information for VRF default
+Router identifier 10.1.2.0, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >Ec    RD: 10.1.1.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.1.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ * >      RD: 10.1.2.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 -                     -       -       0       i
+ * >Ec    RD: 10.1.1.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.1.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ * >      RD: 10.1.2.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 -                     -       -       0       i
+```
+- ###### EVPN Route-Type 1
+```
+BGP routing table information for VRF default
+Router identifier 10.1.2.0, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >      RD: 65001:10 auto-discovery 0 0010:aaaa:aaaa:aaaa:aaaa
+                                 -                     -       -       0       i
+ * >Ec    RD: 10.1.1.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.1.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ * >      RD: 10.1.2.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 -                     -       -       0       i
+ * >      RD: 65001:20 auto-discovery 0 0020:aaaa:aaaa:aaaa:aaaa
+                                 -                     -       -       0       i
+ * >Ec    RD: 10.1.1.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.1.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ * >      RD: 10.1.2.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 -                     -       -       0       i
 
 ```
 - ###### ARP
@@ -715,9 +817,67 @@ end
 
 ```
 - ##### DC1-Leaf-03
-- ###### EVPN Route-Type 2
+- ###### EVPN Route-Type 4
 ```
+BGP routing table information for VRF default
+Router identifier 10.1.3.0, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
 
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >Ec    RD: 10.1.1.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.1.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ * >Ec    RD: 10.1.2.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.2.0:1 ethernet-segment 0010:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ * >Ec    RD: 10.1.1.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.1.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.1.0
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ * >Ec    RD: 10.1.2.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.2.0:1 ethernet-segment 0020:aaaa:aaaa:aaaa:aaaa 10.1.2.0
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+```
+- ###### EVPN Route-Type 1
+```
+BGP routing table information for VRF default
+Router identifier 10.1.3.0, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >Ec    RD: 65001:10 auto-discovery 0 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 65001:10 auto-discovery 0 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ * >Ec    RD: 10.1.1.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.1.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ * >Ec    RD: 10.1.2.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.2.0:1 auto-discovery 0010:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:20 auto-discovery 0 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 65001:20 auto-discovery 0 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ * >Ec    RD: 10.1.1.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.1.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
+ * >Ec    RD: 10.1.2.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
+ *  ec    RD: 10.1.2.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
+                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
 ```
 - ###### ARP
 ```
