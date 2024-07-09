@@ -41,7 +41,7 @@
 
 
 #### Структурная схема сети:
-![123](/lesson6/DC-Topology_L3VXLAN.png)
+![123](/lesson6/DC-Topology_Multihoming.png)
 
 #### Конфигурация устройств:
 ----------------------------
@@ -73,6 +73,27 @@ vlan 20
 vrf instance PROD
    description ### PROD SERVERS ###
 !
+interface Port-Channel10
+   switchport trunk allowed vlan 10
+   switchport mode trunk
+   !
+   evpn ethernet-segment
+      identifier 0010:aaaa:aaaa:aaaa:aaaa
+      route-target import 00:10:aa:aa:aa:aa
+   lacp system-id 0010.aaaa.aaaa
+!
+interface Port-Channel11
+   lacp system-id 0010.aaaa.aaaa
+!
+interface Port-Channel20
+   switchport trunk allowed vlan 20
+   switchport mode trunk
+   !
+   evpn ethernet-segment
+      identifier 0020:aaaa:aaaa:aaaa:aaaa
+      route-target import 00:20:aa:aa:aa:aa
+   lacp system-id 0020.aaaa.aaaa
+!
 interface Ethernet1
    description ### Link to DC1-Spine-01 int Eth1 ###
    no switchport
@@ -100,11 +121,10 @@ interface Ethernet5
 interface Ethernet6
 !
 interface Ethernet7
+   channel-group 20 mode active
 !
 interface Ethernet8
-   description ### To Client-1 int e 0/0 ###
-   switchport trunk allowed vlan 10
-   switchport mode trunk
+   channel-group 10 mode active
 !
 interface Ethernet9
 !
@@ -117,6 +137,11 @@ interface Vlan10
    description ### GW net-10 ###
    vrf PROD
    ip address virtual 10.0.10.1/24
+!
+interface Vlan20
+   description ### GW net-20 ###
+   vrf PROD
+   ip address virtual 10.0.20.1/24
 !
 interface Vxlan1
    vxlan source-interface Loopback1
@@ -172,10 +197,7 @@ router ospf 1
 !
 end
 
-
 ```
-
-
 ----------------------------
 - ##### DC1-Leaf-02:
 ```
@@ -201,6 +223,27 @@ vlan 20
    name net-20
 !
 vrf instance PROD
+!
+interface Port-Channel10
+   switchport trunk allowed vlan 10
+   switchport mode trunk
+   !
+   evpn ethernet-segment
+      identifier 0010:aaaa:aaaa:aaaa:aaaa
+      route-target import 00:10:aa:aa:aa:aa
+   lacp system-id 0010.aaaa.aaaa
+!
+interface Port-Channel11
+   lacp system-id 0010.aaaa.aaaa
+!
+interface Port-Channel20
+   switchport trunk allowed vlan 20
+   switchport mode trunk
+   !
+   evpn ethernet-segment
+      identifier 0020:aaaa:aaaa:aaaa:aaaa
+      route-target import 00:20:aa:aa:aa:aa
+   lacp system-id 0020.aaaa.aaaa
 !
 interface Ethernet1
    description ### Link To DC1-Spine-01 int Eth2 ###
@@ -229,16 +272,23 @@ interface Ethernet5
 interface Ethernet6
 !
 interface Ethernet7
+   channel-group 10 mode active
 !
 interface Ethernet8
-   switchport trunk allowed vlan 20
-   switchport mode trunk
+   channel-group 20 mode active
+!
+interface Ethernet9
 !
 interface Loopback1
    description ### Lo1 ###
    ip address 10.1.2.0/32
 !
 interface Management1
+!
+interface Vlan10
+   description ### GW net-10 ###
+   vrf PROD
+   ip address virtual 10.0.10.1/24
 !
 interface Vlan20
    description ### GW net-20 ###
@@ -299,7 +349,6 @@ router ospf 1
    log-adjacency-changes detail
 !
 end
-
 
 ```  
 ----------------------------
