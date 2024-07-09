@@ -879,14 +879,40 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
  *  ec    RD: 10.1.2.0:1 auto-discovery 0020:aaaa:aaaa:aaaa:aaaa
                                  10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
 ```
-- ###### ARP
+- ##### Clinet-1
+```
+Client-1#show lacp 1 neighbor
+Flags:  S - Device is requesting Slow LACPDUs
+        F - Device is requesting Fast LACPDUs
+        A - Device is in Active mode       P - Device is in Passive mode
+
+Channel group 1 neighbors
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Et0/0     SA      32768     0010.aaaa.aaaa   7s    0x0    0xA    0x8     0x3D
+Et0/1     SA      32768     0010.aaaa.aaaa   7s    0x0    0xA    0x7     0x3D
+```
+- ##### Clinet-2
+```
+Client-2#show lacp 1 neighbor
+Flags:  S - Device is requesting Slow LACPDUs
+        F - Device is requesting Fast LACPDUs
+        A - Device is in Active mode       P - Device is in Passive mode
+
+Channel group 1 neighbors
+
+Partner's information:
+
+                  LACP port                        Admin  Oper   Port    Port
+Port      Flags   Priority  Dev ID          Age    key    Key    Number  State
+Et0/0     SA      32768     0020.aaaa.aaaa  13s    0x0    0x14   0x8     0x3D
+Et0/1     SA      32768     0020.aaaa.aaaa  12s    0x0    0x14   0x7     0x3D
 ```
 
-```
-- ###### Таблица маршрутизации VRF PROD
-```
 
-```
 
 #### Проверка IP связности клиентов:
 - ##### ICMP Clinet-1 to Clinet-2
