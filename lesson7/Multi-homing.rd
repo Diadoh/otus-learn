@@ -41,7 +41,7 @@
 
 
 #### Структурная схема сети:
-![123](/lesson7/DC-Topology_Multihoming.png)
+![123](/lesson6/DC-Topology_L3VXLAN.png)
 
 #### Конфигурация устройств:
 ----------------------------
