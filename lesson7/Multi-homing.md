@@ -700,266 +700,62 @@ end
 - ##### DC1-Leaf-01
 - ###### EVPN Route-Type 2
 ```
-DC1-Leaf-01#show bgp evpn route-type mac-ip
-BGP routing table information for VRF default
-Router identifier 10.1.1.0, local AS number 65001
-Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
-                    c - Contributing to ECMP, % - Pending BGP convergence
-Origin codes: i - IGP, e - EGP, ? - incomplete
-AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
-
-          Network                Next Hop              Metric  LocPref Weight  Path
- * >      RD: 65001:10 mac-ip aabb.cc00.8000
-                                 -                     -       -       0       i
- * >      RD: 65001:10 mac-ip aabb.cc00.8000 10.0.10.101
-                                 -                     -       -       0       i
- * >Ec    RD: 65001:20 mac-ip aabb.cc00.9000
-                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:20 mac-ip aabb.cc00.9000
-                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:20 mac-ip aabb.cc00.9000 10.0.20.102
-                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:20 mac-ip aabb.cc00.9000 10.0.20.102
-                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:10 mac-ip aabb.cc00.a000
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:10 mac-ip aabb.cc00.a000
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:20 mac-ip aabb.cc00.b000
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:20 mac-ip aabb.cc00.b000
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:20 mac-ip aabb.cc00.b000 10.0.20.104
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:20 mac-ip aabb.cc00.b000 10.0.20.104
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
 
 ```
 - ###### ARP
 ```
-DC1-Leaf-01#show ip arp vrf PROD
-Address         Age (sec)  Hardware Addr   Interface
-10.0.10.101       2:12:43  aabb.cc00.8000  Vlan10, Ethernet8
-```
-- ###### Таблица маршрутизации VRF PROD
-```
-DC1-Leaf-01#show ip route vrf PROD
-
-VRF: PROD
-Codes: C - connected, S - static, K - kernel,
-       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
-       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
-       N2 - OSPF NSSA external type2, B - Other BGP Routes,
-       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
-       I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
-       A O - OSPF Summary, NG - Nexthop Group Static Route,
-       V - VXLAN Control Service, M - Martian,
-       DH - DHCP client installed default route,
-       DP - Dynamic Policy Route, L - VRF Leaked,
-       G  - gRIBI, RC - Route Cache Route
-
-Gateway of last resort is not set
-
- C        10.0.10.0/24 is directly connected, Vlan10
- B I      10.0.20.102/32 [200/0] via VTEP 10.1.2.0 VNI 10001 router-mac 50:00:00:cb:38:c2 local-interface Vxlan1
- B I      10.0.20.104/32 [200/0] via VTEP 10.1.3.0 VNI 10001 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
- B I      10.0.20.0/24 [200/0] via VTEP 10.1.2.0 VNI 10001 router-mac 50:00:00:cb:38:c2 local-interface Vxlan1
 
 ```
 
 - ##### DC1-Leaf-02
 - ###### EVPN Route-Type 2
 ```
-DC1-Leaf-02#show bgp evpn route-type mac-ip
-BGP routing table information for VRF default
-Router identifier 10.1.2.0, local AS number 65001
-Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
-                    c - Contributing to ECMP, % - Pending BGP convergence
-Origin codes: i - IGP, e - EGP, ? - incomplete
-AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
-
-          Network                Next Hop              Metric  LocPref Weight  Path
- * >Ec    RD: 65001:10 mac-ip aabb.cc00.8000
-                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:10 mac-ip aabb.cc00.8000
-                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:10 mac-ip aabb.cc00.8000 10.0.10.101
-                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:10 mac-ip aabb.cc00.8000 10.0.10.101
-                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
- * >      RD: 65001:20 mac-ip aabb.cc00.9000
-                                 -                     -       -       0       i
- * >      RD: 65001:20 mac-ip aabb.cc00.9000 10.0.20.102
-                                 -                     -       -       0       i
- * >Ec    RD: 65001:10 mac-ip aabb.cc00.a000
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:10 mac-ip aabb.cc00.a000
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:20 mac-ip aabb.cc00.b000
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:20 mac-ip aabb.cc00.b000
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:20 mac-ip aabb.cc00.b000 10.0.20.104
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:20 mac-ip aabb.cc00.b000 10.0.20.104
-                                 10.1.3.0              -       100     0       i Or-ID: 10.1.3.0 C-LST: 0.0.0.1
 
 ```
 - ###### ARP
 ```
-DC1-Leaf-02#show ip arp vrf PROD
-Address         Age (sec)  Hardware Addr   Interface
-10.0.20.102       1:25:55  aabb.cc00.9000  Vlan20, Ethernet8
-10.0.20.104             -  aabb.cc00.b000  Vlan20, Vxlan1
 
 ```
 - ###### Таблица маршрутизации VRF PROD
 ```
-DC1-Leaf-02#show ip route vrf PROD
-
-VRF: PROD
-Codes: C - connected, S - static, K - kernel,
-       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
-       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
-       N2 - OSPF NSSA external type2, B - Other BGP Routes,
-       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
-       I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
-       A O - OSPF Summary, NG - Nexthop Group Static Route,
-       V - VXLAN Control Service, M - Martian,
-       DH - DHCP client installed default route,
-       DP - Dynamic Policy Route, L - VRF Leaked,
-       G  - gRIBI, RC - Route Cache Route
-
-Gateway of last resort is not set
-
- B I      10.0.10.101/32 [200/0] via VTEP 10.1.1.0 VNI 10001 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
- B I      10.0.10.0/24 [200/0] via VTEP 10.1.1.0 VNI 10001 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
- B I      10.0.20.104/32 [200/0] via VTEP 10.1.3.0 VNI 10001 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
- C        10.0.20.0/24 is directly connected, Vlan20
 
 ```
 - ##### DC1-Leaf-03
 - ###### EVPN Route-Type 2
 ```
-DC1-Leaf-03#show bgp evpn route-type mac-ip
-BGP routing table information for VRF default
-Router identifier 10.1.3.0, local AS number 65001
-Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
-                    c - Contributing to ECMP, % - Pending BGP convergence
-Origin codes: i - IGP, e - EGP, ? - incomplete
-AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
-
-          Network                Next Hop              Metric  LocPref Weight  Path
- * >Ec    RD: 65001:10 mac-ip aabb.cc00.8000
-                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:10 mac-ip aabb.cc00.8000
-                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:10 mac-ip aabb.cc00.8000 10.0.10.101
-                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:10 mac-ip aabb.cc00.8000 10.0.10.101
-                                 10.1.1.0              -       100     0       i Or-ID: 10.1.1.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:20 mac-ip aabb.cc00.9000
-                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:20 mac-ip aabb.cc00.9000
-                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
- * >Ec    RD: 65001:20 mac-ip aabb.cc00.9000 10.0.20.102
-                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
- *  ec    RD: 65001:20 mac-ip aabb.cc00.9000 10.0.20.102
-                                 10.1.2.0              -       100     0       i Or-ID: 10.1.2.0 C-LST: 0.0.0.1
- * >      RD: 65001:10 mac-ip aabb.cc00.a000
-                                 -                     -       -       0       i
- * >      RD: 65001:20 mac-ip aabb.cc00.b000
-                                 -                     -       -       0       i
- * >      RD: 65001:20 mac-ip aabb.cc00.b000 10.0.20.104
-                                 -                     -       -       0       i
 
 ```
 - ###### ARP
 ```
-DC1-Leaf-03#show ip arp vrf PROD
-Address         Age (sec)  Hardware Addr   Interface
-10.0.10.101             -  aabb.cc00.8000  Vlan10, Vxlan1
-10.0.20.102             -  aabb.cc00.9000  Vlan20, Vxlan1
-10.0.20.104       0:01:42  aabb.cc00.b000  Vlan20, Ethernet7
 
 ```
 - ###### Таблица маршрутизации VRF PROD
 ```
-DC1-Leaf-03#show ip route vrf PROD
-
-VRF: PROD
-Codes: C - connected, S - static, K - kernel,
-       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
-       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
-       N2 - OSPF NSSA external type2, B - Other BGP Routes,
-       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
-       I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
-       A O - OSPF Summary, NG - Nexthop Group Static Route,
-       V - VXLAN Control Service, M - Martian,
-       DH - DHCP client installed default route,
-       DP - Dynamic Policy Route, L - VRF Leaked,
-       G  - gRIBI, RC - Route Cache Route
-
-Gateway of last resort is not set
-
- B I      10.0.10.101/32 [200/0] via VTEP 10.1.1.0 VNI 10001 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
- C        10.0.10.0/24 is directly connected, Vlan10
- B I      10.0.20.102/32 [200/0] via VTEP 10.1.2.0 VNI 10001 router-mac 50:00:00:cb:38:c2 local-interface Vxlan1
- C        10.0.20.0/24 is directly connected, Vlan20
-
 
 ```
 
 #### Проверка IP связности клиентов:
 - ##### ICMP Clinet-1 to Clinet-2
 ```
-Client-1#ping 10.0.20.102
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.0.20.102, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 34/51/78 ms
 
 ```
 - ##### ICMP Clinet-1 to Clinet-4
 ```
-Client-1#ping 10.0.20.104
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.0.20.104, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 39/53/79 ms
 
 ```
 - ##### ICMP Clinet-2 to Clinet-1
 ```
-Client-2#ping 10.0.10.101
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.0.10.101, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 38/57/103 ms
 
 ```
 - ##### ICMP Clinet-2 to Clinet-3
 ```
-Client-2#ping 10.0.10.103
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.0.10.103, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 37/53/80 ms
 
 ```
 - ##### ICMP Clinet-4 to Clinet-1
 ```
-Client-4#ping 10.0.10.101
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.0.10.101, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 41/61/82 ms
+
 ```
 - ##### ICMP Clinet-4 to Clinet-3
 ```
-Client-4#ping 10.0.10.103
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.0.10.103, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 14/17/19 ms
+
 ```
