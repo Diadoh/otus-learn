@@ -83,9 +83,6 @@ interface Port-Channel10
       route-target import 00:10:aa:aa:aa:aa
    lacp system-id 0010.aaaa.aaaa
 !
-interface Port-Channel11
-   lacp system-id 0010.aaaa.aaaa
-!
 interface Port-Channel20
    switchport trunk allowed vlan 20
    switchport mode trunk
@@ -232,9 +229,6 @@ interface Port-Channel10
    evpn ethernet-segment
       identifier 0010:aaaa:aaaa:aaaa:aaaa
       route-target import 00:10:aa:aa:aa:aa
-   lacp system-id 0010.aaaa.aaaa
-!
-interface Port-Channel11
    lacp system-id 0010.aaaa.aaaa
 !
 interface Port-Channel20
