@@ -915,27 +915,44 @@ Et0/1     SA      32768     0020.aaaa.aaaa  12s    0x0    0x14   0x7     0x3D
 
 
 #### Проверка IP связности клиентов:
-- ##### ICMP Clinet-1 to Clinet-2
+- ##### Балансировка на Client-1
+![123](/lesson7/DC-Topology_Multihoming_wireshark.png)
+- ##### ICMP Clinet-1 to other Clinets
 ```
+Client-1#ping 10.0.10.103
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.10.103, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 64/75/90 ms
+Client-1#ping 10.0.20.104
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.20.104, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 36/43/48 ms
+Client-1#ping 10.0.20.102
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.20.102, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 14/36/99 ms
+```
+- ##### Балансировка на Client-2
+![123](/lesson7/DC-Topology_Multihoming_wireshark2.png)
 
+- ##### ICMP Clinet-1 to other Clinets
 ```
-- ##### ICMP Clinet-1 to Clinet-4
-```
-
-```
-- ##### ICMP Clinet-2 to Clinet-1
-```
-
-```
-- ##### ICMP Clinet-2 to Clinet-3
-```
-
-```
-- ##### ICMP Clinet-4 to Clinet-1
-```
-
-```
-- ##### ICMP Clinet-4 to Clinet-3
-```
-
+Client-2#ping 10.0.10.101
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.10.101, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 13/18/33 ms
+Client-2#ping 10.0.10.103
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.10.103, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 34/218/888 ms
+Client-2#ping 10.0.20.104
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.20.104, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 59/138/259 ms
 ```
