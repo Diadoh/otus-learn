@@ -3262,6 +3262,9 @@ Gateway of last resort is not set
  A B      10.0.0.0/12 is directly connected, Null0
  B E      10.16.0.0/12 [200/0] via 10.0.0.1, Vlan1001
 
+```
+
+```
 DC1-TORSW-01(config)#show ip route vrf VMWARE
 
 VRF: VMWARE
@@ -3290,6 +3293,9 @@ Gateway of last resort is not set
  B I      10.16.103.0/24 [200/0] via VTEP 172.19.0.1 VNI 20001 router-mac 50:00:00:88:2f:f3 local-interface Vxlan1
  A B      10.16.0.0/12 is directly connected, Null0
 
+```
+
+```
 DC1-TORSW-01(config)#show bgp evpn route-type ethernet-segment
 BGP routing table information for VRF default
 Router identifier 172.16.0.1, local AS number 65001
@@ -3360,6 +3366,9 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
  *  ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.4
                                  172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.1 0.0.0.2
 
+```
+
+```
 DC1-TORSW-01(config)#show bgp evpn route-type ip-prefix ipv4
 BGP routing table information for VRF default
 Router identifier 172.16.0.1, local AS number 65001
@@ -3405,10 +3414,7 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
                                  172.19.0.1            -       100     0       i Or-ID: 172.19.0.1 C-LST: 0.0.0.1
  *        RD: 10.1.1.0:20001 ip-prefix 10.16.103.0/24
                                  172.19.0.1            -       100     0       i Or-ID: 172.19.0.1 C-LST: 0.0.0.1
-
-
-
-  ```
+```
   
 </details>
 
