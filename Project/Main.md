@@ -4120,7 +4120,7 @@ VRF info: (vrf in name/id, vrf out name/id)
 </details>
 
 <details>
-  <summary>Spoiler warning</summary>
+  <summary>Firewalls</summary>
 
 DC1-iFW-01  
   ```
