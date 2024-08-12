@@ -3415,18 +3415,563 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
  *        RD: 10.1.1.0:20001 ip-prefix 10.16.103.0/24
                                  172.19.0.1            -       100     0       i Or-ID: 172.19.0.1 C-LST: 0.0.0.1
 ```
-  
+
+```
+DC1-TORSW-01(config)#show bgp evpn route-type mac-ip
+BGP routing table information for VRF default
+Router identifier 172.16.0.1, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >      RD: 65001:10 mac-ip aabb.cc80.d000
+                                 -                     -       -       0       i
+ * >      RD: 65001:11 mac-ip aabb.cc80.d000
+                                 -                     -       -       0       i
+ * >      RD: 65001:20 mac-ip aabb.cc80.d000
+                                 -                     -       -       0       i
+ * >      RD: 65001:101 mac-ip aabb.cc80.d000
+                                 -                     -       -       0       i
+ * >      RD: 65001:10 mac-ip aabb.cc80.d000 10.0.10.11
+                                 -                     -       -       0       i
+ * >      RD: 65001:20 mac-ip aabb.cc80.d000 10.0.20.11
+                                 -                     -       -       0       i
+ * >      RD: 65001:101 mac-ip aabb.cc80.d000 10.16.101.11
+                                 -                     -       -       0       i
+ * >Ec    RD: 65001:10 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:11 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:11 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc80.e000 10.0.10.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc80.e000 10.0.10.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:11 mac-ip aabb.cc80.e000 10.0.11.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:11 mac-ip aabb.cc80.e000 10.0.11.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc80.e000 10.0.20.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc80.e000 10.0.20.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc80.f000
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc80.f000
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc80.f000
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc80.f000
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc80.f000 10.0.20.21
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc80.f000 10.0.20.21
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.0000
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.0000
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.0000 10.16.102.22
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.0000 10.16.102.22
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.1000 10.0.10.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.1000 10.0.10.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.1000 10.0.11.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.1000 10.0.11.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.1000 10.0.20.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.1000 10.0.20.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.1000 10.16.102.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.1000 10.16.102.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >      RD: 65001:10 mac-ip aabb.cc81.2000
+                                 -                     -       -       0       i
+ * >      RD: 65001:11 mac-ip aabb.cc81.2000
+                                 -                     -       -       0       i
+ * >      RD: 65001:101 mac-ip aabb.cc81.2000
+                                 -                     -       -       0       i
+ * >      RD: 65001:10 mac-ip aabb.cc81.2000 10.0.10.12
+                                 -                     -       -       0       i
+ * >      RD: 65001:101 mac-ip aabb.cc81.2000 10.16.101.12
+                                 -                     -       -       0       i
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.3000 10.0.10.14
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.3000 10.0.10.14
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.3000 10.0.20.14
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.3000 10.0.20.14
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.4000 10.0.10.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.4000 10.0.10.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.4000 10.0.11.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.4000 10.0.11.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.4000 10.0.20.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.4000 10.0.20.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.4000 10.16.102.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.4000 10.16.102.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+```
+
 </details>
 
 <details>
-  <summary>Spoiler warning</summary>
+  <summary>DC2-TORSW-01</summary>
   
-  Spoiler text. Note that it's important to have a space after the summary tag. You should be able to write any markdown you want inside the `<details>` tag... just make sure you close `<details>` afterward.
-  
-  ```javascript
-  console.log("I'm a code block!");
-  ```
-  
+```
+DC2-TORSW-01#show ip route vrf PROD
+
+VRF: PROD
+Codes: C - connected, S - static, K - kernel,
+       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+       N2 - OSPF NSSA external type2, B - Other BGP Routes,
+       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
+       I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
+       A O - OSPF Summary, NG - Nexthop Group Static Route,
+       V - VXLAN Control Service, M - Martian,
+       DH - DHCP client installed default route,
+       DP - Dynamic Policy Route, L - VRF Leaked,
+       G  - gRIBI, RC - Route Cache Route
+
+Gateway of last resort is not set
+
+ C        10.0.0.8/29 is directly connected, Vlan1001
+ B I      10.0.10.11/32 [200/0] via VTEP 172.16.0.1 VNI 20000 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
+ B I      10.0.10.12/32 [200/0] via VTEP 172.16.0.1 VNI 20000 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
+ B I      10.0.10.13/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.10.14/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.10.23/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.0.10.24/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ C        10.0.10.0/24 is directly connected, Vlan10
+ B I      10.0.11.13/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.11.23/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.0.11.24/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ C        10.0.11.0/24 is directly connected, Vlan11
+ B I      10.0.20.11/32 [200/0] via VTEP 172.16.0.1 VNI 20000 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
+ B I      10.0.20.13/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.20.14/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.20.23/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.0.20.24/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ C        10.0.20.0/24 is directly connected, Vlan20
+ A B      10.0.0.0/12 is directly connected, Null0
+ B I      10.16.0.0/12 [200/0] via VTEP 172.16.0.1 VNI 20000 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
+
+```
+
+```
+DC2-TORSW-01#show ip route vrf VMWARE
+
+VRF: VMWARE
+Codes: C - connected, S - static, K - kernel,
+       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+       N2 - OSPF NSSA external type2, B - Other BGP Routes,
+       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
+       I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
+       A O - OSPF Summary, NG - Nexthop Group Static Route,
+       V - VXLAN Control Service, M - Martian,
+       DH - DHCP client installed default route,
+       DP - Dynamic Policy Route, L - VRF Leaked,
+       G  - gRIBI, RC - Route Cache Route
+
+Gateway of last resort is not set
+
+ B I      10.0.101.0/24 [200/0] via VTEP 172.16.0.4 VNI 20001 router-mac 50:00:00:03:37:66 local-interface Vxlan1
+ B I      10.0.0.0/12 [200/0] via VTEP 172.16.0.1 VNI 20001 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
+ C        10.16.0.8/29 is directly connected, Vlan1002
+ B I      10.16.101.11/32 [200/0] via VTEP 172.16.0.1 VNI 20001 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
+ B I      10.16.101.12/32 [200/0] via VTEP 172.16.0.1 VNI 20001 router-mac 50:00:00:d7:ee:0b local-interface Vxlan1
+ B I      10.16.101.0/24 [200/0] via VTEP 172.16.0.2 VNI 20001 router-mac 50:00:00:cb:38:c2 local-interface Vxlan1
+ B I      10.16.102.23/32 [200/0] via VTEP 172.22.0.3 VNI 20001 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.16.102.24/32 [200/0] via VTEP 172.22.0.3 VNI 20001 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ C        10.16.102.0/24 is directly connected, Vlan102
+ B I      10.16.103.0/24 [200/0] via VTEP 172.19.0.1 VNI 20001 router-mac 50:00:00:88:2f:f3 local-interface Vxlan1
+ A B      10.16.0.0/12 is directly connected, Null0
+
+```
+
+```
+DC2-TORSW-01#show bgp evpn route-type ethernet-segment
+BGP routing table information for VRF default
+Router identifier 172.22.0.1, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >Ec    RD: 172.16.0.1:1 ethernet-segment 0001:0012:aaaa:aaaa:0010 172.16.0.1
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 172.16.0.1:1 ethernet-segment 0001:0012:aaaa:aaaa:0010 172.16.0.1
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 172.16.0.2:1 ethernet-segment 0001:0012:aaaa:aaaa:0010 172.16.0.2
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 172.16.0.2:1 ethernet-segment 0001:0012:aaaa:aaaa:0010 172.16.0.2
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 172.16.0.1:1 ethernet-segment 0001:0012:aaaa:aaaa:0020 172.16.0.1
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 172.16.0.1:1 ethernet-segment 0001:0012:aaaa:aaaa:0020 172.16.0.1
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 172.16.0.2:1 ethernet-segment 0001:0012:aaaa:aaaa:0020 172.16.0.2
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 172.16.0.2:1 ethernet-segment 0001:0012:aaaa:aaaa:0020 172.16.0.2
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 172.16.0.3:1 ethernet-segment 0001:0034:aaaa:aaaa:0010 172.16.0.3
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 172.16.0.3:1 ethernet-segment 0001:0034:aaaa:aaaa:0010 172.16.0.3
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 172.16.0.4:1 ethernet-segment 0001:0034:aaaa:aaaa:0010 172.16.0.4
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 172.16.0.4:1 ethernet-segment 0001:0034:aaaa:aaaa:0010 172.16.0.4
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 172.16.0.3:1 ethernet-segment 0001:0034:aaaa:aaaa:0020 172.16.0.3
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 172.16.0.3:1 ethernet-segment 0001:0034:aaaa:aaaa:0020 172.16.0.3
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 172.16.0.4:1 ethernet-segment 0001:0034:aaaa:aaaa:0020 172.16.0.4
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 172.16.0.4:1 ethernet-segment 0001:0034:aaaa:aaaa:0020 172.16.0.4
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 172.22.0.1:1 ethernet-segment 0002:0012:aaaa:aaaa:0010 172.22.0.1
+                                 -                     -       -       0       i
+ * >Ec    RD: 172.22.0.2:1 ethernet-segment 0002:0012:aaaa:aaaa:0010 172.22.0.2
+                                 172.22.0.2            -       100     0       i Or-ID: 172.22.0.2 C-LST: 0.0.0.2
+ *  ec    RD: 172.22.0.2:1 ethernet-segment 0002:0012:aaaa:aaaa:0010 172.22.0.2
+                                 172.22.0.2            -       100     0       i Or-ID: 172.22.0.2 C-LST: 0.0.0.2
+ * >      RD: 172.22.0.1:1 ethernet-segment 0002:0012:aaaa:aaaa:0020 172.22.0.1
+                                 -                     -       -       0       i
+ * >Ec    RD: 172.22.0.2:1 ethernet-segment 0002:0012:aaaa:aaaa:0020 172.22.0.2
+                                 172.22.0.2            -       100     0       i Or-ID: 172.22.0.2 C-LST: 0.0.0.2
+ *  ec    RD: 172.22.0.2:1 ethernet-segment 0002:0012:aaaa:aaaa:0020 172.22.0.2
+                                 172.22.0.2            -       100     0       i Or-ID: 172.22.0.2 C-LST: 0.0.0.2
+ * >Ec    RD: 172.22.0.3:1 ethernet-segment 0002:0034:aaaa:aaaa:0010 172.22.0.3
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 172.22.0.3:1 ethernet-segment 0002:0034:aaaa:aaaa:0010 172.22.0.3
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0010 172.22.0.4
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.2
+ *  ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0010 172.22.0.4
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.2
+ * >Ec    RD: 172.22.0.3:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.3
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 172.22.0.3:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.3
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.4
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.2
+ *  ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.4
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.2
+```
+
+```
+DC2-TORSW-01#show bgp evpn route-type ip-prefix ipv4
+BGP routing table information for VRF default
+Router identifier 172.22.0.1, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.0.0.0/12
+                                 -                     -       -       0       i
+ *        RD: 10.1.1.0:20000 ip-prefix 10.0.0.0/12
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.0.0.0/12
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.0.0.0/12
+                                 172.16.0.1            -       100     0       65011 65011 i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20001 ip-prefix 10.0.0.0/12
+                                 172.16.0.1            -       100     0       65011 65011 i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20001 ip-prefix 10.0.0.0/12
+                                 -                     -       50      0       65012 65012 65012 i
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.0.10.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.0.10.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.0.11.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.0.11.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.0.20.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.0.20.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.0.101.0/24
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20001 ip-prefix 10.0.101.0/24
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.16.0.0/12
+                                 172.16.0.1            -       100     0       65011 65011 i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.16.0.0/12
+                                 172.16.0.1            -       100     0       65011 65011 i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.16.0.0/12
+                                 -                     -       50      0       65012 65012 65012 i
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.16.0.0/12
+                                 -                     -       -       0       i
+ *        RD: 10.1.1.0:20001 ip-prefix 10.16.0.0/12
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20001 ip-prefix 10.16.0.0/12
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.16.101.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ *        RD: 10.1.1.0:20001 ip-prefix 10.16.101.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.16.102.0/24
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.2
+ *        RD: 10.1.1.0:20001 ip-prefix 10.16.102.0/24
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.2
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.16.103.0/24
+                                 172.19.0.1            -       100     0       i Or-ID: 172.19.0.1 C-LST: 0.0.0.2
+ *        RD: 10.1.1.0:20001 ip-prefix 10.16.103.0/24
+                                 172.19.0.1            -       100     0       i Or-ID: 172.19.0.1 C-LST: 0.0.0.2
+```
+
+```
+DC2-TORSW-01#show bgp evpn route-type mac-ip
+BGP routing table information for VRF default
+Router identifier 172.22.0.1, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >Ec    RD: 65001:10 mac-ip aabb.cc80.d000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc80.d000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:11 mac-ip aabb.cc80.d000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:11 mac-ip aabb.cc80.d000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc80.d000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc80.d000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:101 mac-ip aabb.cc80.d000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:101 mac-ip aabb.cc80.d000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc80.d000 10.0.10.11
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc80.d000 10.0.10.11
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc80.d000 10.0.20.11
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc80.d000 10.0.20.11
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:101 mac-ip aabb.cc80.d000 10.16.101.11
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:101 mac-ip aabb.cc80.d000 10.16.101.11
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:11 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:11 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc80.e000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc80.e000 10.0.10.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc80.e000 10.0.10.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:11 mac-ip aabb.cc80.e000 10.0.11.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:11 mac-ip aabb.cc80.e000 10.0.11.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc80.e000 10.0.20.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc80.e000 10.0.20.13
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >      RD: 65001:20 mac-ip aabb.cc80.f000
+                                 -                     -       -       0       i
+ * >      RD: 65001:102 mac-ip aabb.cc80.f000
+                                 -                     -       -       0       i
+ * >      RD: 65001:20 mac-ip aabb.cc80.f000 10.0.20.21
+                                 -                     -       -       0       i
+ * >      RD: 65001:102 mac-ip aabb.cc81.0000
+                                 -                     -       -       0       i
+ * >      RD: 65001:102 mac-ip aabb.cc81.0000 10.16.102.22
+                                 -                     -       -       0       i
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.1000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.1000 10.0.10.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.1000 10.0.10.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.1000 10.0.11.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.1000 10.0.11.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.1000 10.0.20.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.1000 10.0.20.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.1000 10.16.102.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.1000 10.16.102.23
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.2000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.2000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.2000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.2000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:101 mac-ip aabb.cc81.2000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:101 mac-ip aabb.cc81.2000
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.2000 10.0.10.12
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.2000 10.0.10.12
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:101 mac-ip aabb.cc81.2000 10.16.101.12
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:101 mac-ip aabb.cc81.2000 10.16.101.12
+                                 172.16.0.1            -       100     0       i Or-ID: 172.16.0.1 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.3000
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.3000 10.0.10.14
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.3000 10.0.10.14
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.3000 10.0.20.14
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.3000 10.0.20.14
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.2 0.0.0.1
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.4000
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:10 mac-ip aabb.cc81.4000 10.0.10.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:10 mac-ip aabb.cc81.4000 10.0.10.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:11 mac-ip aabb.cc81.4000 10.0.11.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:11 mac-ip aabb.cc81.4000 10.0.11.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:20 mac-ip aabb.cc81.4000 10.0.20.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:20 mac-ip aabb.cc81.4000 10.0.20.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ * >Ec    RD: 65001:102 mac-ip aabb.cc81.4000 10.16.102.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+ *  ec    RD: 65001:102 mac-ip aabb.cc81.4000 10.16.102.24
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.2
+```
+
 </details>
 
 <details>
@@ -3536,4 +4081,39 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 73/128/200 ms
 
   ```
   
+</details>
+
+<details>
+  <summary>Трассировка при отказе DC1-FW-01 </summary>
+
+Трассировка в сторону vrf PROD - DC1-iFW-01 включен
+
+```
+DC2-ESXi-04#traceroute vrf VMWARE-102 10.0.10.14
+Type escape sequence to abort.
+Tracing the route to 10.0.10.14
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.16.102.1 58 msec 14 msec 15 msec
+  2 10.16.0.3 1444 msec 577 msec 48 msec
+  3 10.16.0.1 679 msec 1353 msec 67 msec
+  4 10.0.0.3 315 msec 411 msec 60 msec
+  5 10.0.20.1 227 msec 157 msec 500 msec
+  6 10.0.10.14 118 msec 1045 msec 127 msec
+
+```
+Трассировка в сторону vrf PROD - DC1-iFW-01 выключен
+
+```
+DC2-ESXi-04#traceroute vrf VMWARE-102 10.0.10.14
+Type escape sequence to abort.
+Tracing the route to 10.0.10.14
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.16.102.1 20 msec 938 msec 159 msec
+  2 10.16.102.1 2376 msec 33 msec 27 msec
+  3 10.16.0.9 45 msec 41 msec 36 msec
+  4 10.0.0.11 39 msec 93 msec 46 msec
+  5 10.0.20.1 130 msec 114 msec 207 msec
+  6 10.0.10.14 275 msec 329 msec *
+
+```
 </details>
