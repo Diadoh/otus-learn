@@ -201,6 +201,254 @@
 ### Конфигурации
 
 <details>
-  <summary>Spoiler warning</summary>
+  <summary>DC1-TORSW-01</summary>
+```
+DC1-TORSW-01(config-router-bgp)#sh run
+! Command: show running-config
+! device: DC1-TORSW-01 (vEOS-lab, EOS-4.29.2F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname DC1-TORSW-01
+!
+spanning-tree mode mstp
+!
+vlan 10
+   name net-10-prod
+!
+vlan 11
+   name net-11-prod
+!
+vlan 20
+   name net-20-prod
+!
+vlan 101
+   name net-101-vmware
+!
+vlan 1000
+   name Transit-VMWARE
+!
+vlan 1001
+   name Transit-PROD
+!
+vlan 1002
+   name VMWARE
+!
+vrf instance PROD
+   description ### PROD SERVERS ###
+!
+vrf instance VMWARE
+   description ### VMWARE SERVICES ###
+!
+interface Port-Channel10
+   switchport trunk allowed vlan 10-11,20,101
+   switchport mode trunk
+   !
+   evpn ethernet-segment
+      identifier 0001:0012:aaaa:aaaa:0010
+      route-target import 01:12:aa:aa:00:10
+   lacp system-id 0010.aaaa.aaaa
+!
+interface Port-Channel20
+   switchport trunk allowed vlan 10-11,20,101
+   switchport mode trunk
+   !
+   evpn ethernet-segment
+      identifier 0001:0012:aaaa:aaaa:0020
+      route-target import 00:01:00:12:00:20
+   lacp system-id 0020.aaaa.aaaa
+!
+interface Ethernet1
+   description ### Link to DC1-CSW-01 ###
+   mtu 9214
+   no switchport
+   ip address 172.18.0.0/31
+   bfd interval 1000 min-rx 1000 multiplier 25
+   no ip ospf neighbor bfd
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf message-digest-key 1 sha512 7 sWOHWEVSxhBbE4FH0cwrRg==
+!
+interface Ethernet2
+   description ### Link to DC1-CSW-02 ###
+   mtu 9214
+   no switchport
+   ip address 172.18.0.2/31
+   bfd interval 1000 min-rx 1000 multiplier 25
+   no ip ospf neighbor bfd
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf message-digest-key 1 sha512 7 cTjzXaMM0v0jtIw/jkVf4g==
+!
+interface Ethernet3
+   mtu 9214
+   no ip ospf neighbor bfd
+!
+interface Ethernet4
+   mtu 9214
+   switchport trunk allowed vlan 1001-1002
+   switchport mode trunk
+   no ip ospf neighbor bfd
+!
+interface Ethernet5
+   description ### Link to CH1-CSW-01 int Eth1 ###
+   mtu 9214
+   no switchport
+   ip address 172.18.0.16/31
+   bfd interval 1000 min-rx 1000 multiplier 25
+   no ip ospf neighbor bfd
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf message-digest-key 1 sha512 7 0qDaaPrQfPk=
+!
+interface Ethernet6
+   mtu 9214
+   no ip ospf neighbor bfd
+!
+interface Ethernet7
+   channel-group 10 mode active
+   no ip ospf neighbor bfd
+!
+interface Ethernet8
+   channel-group 20 mode active
+   no ip ospf neighbor bfd
+!
+interface Ethernet9
+   no ip ospf neighbor bfd
+!
+interface Loopback1
+   description ### For BGP/EVPN ###
+   ip address 172.16.0.1/32
+!
+interface Management1
+!
+interface Vlan10
+   description ### GW net-10 ###
+   vrf PROD
+   ip address virtual 10.0.10.1/24
+!
+interface Vlan11
+   description ### GW net-10 ###
+   vrf PROD
+   ip address virtual 10.0.11.1/24
+!
+interface Vlan20
+   description ### GW net-10 ###
+   vrf PROD
+   ip address virtual 10.0.20.1/24
+!
+interface Vlan101
+   description ### GW net-101 ###
+   vrf VMWARE
+   ip address virtual 10.16.101.1/24
+   ip virtual-router address 10.16.101.1/24
+!
+interface Vlan1001
+   vrf PROD
+   ip address 10.0.0.3/29
+!
+interface Vlan1002
+   vrf VMWARE
+   ip address 10.16.0.3/29
+!
+interface Vxlan1
+   vxlan source-interface Loopback1
+   vxlan udp-port 4789
+   vxlan vlan 10 vni 10010
+   vxlan vlan 11 vni 10011
+   vxlan vlan 20 vni 10020
+   vxlan vlan 101 vni 10101
+   vxlan vrf PROD vni 20000
+   vxlan vrf VMWARE vni 20001
+!
+ip virtual-router mac-address 00:00:00:65:00:10
+!
+ip routing
+ip routing vrf PROD
+ip routing vrf VMWARE
+!
+ip route vrf VMWARE 10.16.103.0/24 vtep 172.19.0.1 vni 20001 router-mac-address 50:00:00:88:2f:f3 210
+!
+router bgp 65001
+   router-id 172.16.0.1
+   timers bgp 10 30
+   neighbor SPINES peer group
+   neighbor SPINES remote-as 65001
+   neighbor SPINES update-source Loopback1
+   neighbor SPINES send-community extended
+   neighbor 172.17.0.1 peer group SPINES
+   neighbor 172.17.0.2 peer group SPINES
+   !
+   vlan 10
+      rd 65001:10
+      route-target both 65001:10010
+      redistribute learned
+   !
+   vlan 101
+      rd 65001:101
+      route-target both 65001:10101
+      redistribute learned
+   !
+   vlan 11
+      rd 65001:11
+      route-target both 65001:10011
+      redistribute learned
+   !
+   vlan 20
+      rd 65001:20
+      route-target both 65001:10020
+      redistribute learned
+   !
+   address-family evpn
+      neighbor SPINES activate
+   !
+   address-family ipv4
+      no neighbor SPINES activate
+   !
+   vrf PROD
+      rd 10.1.1.0:20000
+      route-target import 65001:20000
+      route-target export 65001:20000
+      neighbor 10.0.0.1 remote-as 65011
+      neighbor 10.0.0.1 update-source Vlan1001
+      aggregate-address 10.0.0.0/12 summary-only
+      redistribute connected
+      !
+      address-family ipv4
+         neighbor 10.0.0.1 activate
+   !
+   vrf VMWARE
+      rd 10.1.1.0:20001
+      route-target import 65001:20001
+      route-target export 65001:20001
+      neighbor 10.16.0.1 remote-as 65011
+      neighbor 10.16.0.1 update-source Vlan1002
+      aggregate-address 10.16.0.0/12 summary-only
+      redistribute connected
+      !
+      address-family ipv4
+         neighbor 10.16.0.1 activate
+!
+router ospf 1
+   router-id 172.16.0.1
+   passive-interface default
+   no passive-interface Ethernet1
+   no passive-interface Ethernet2
+   no passive-interface Ethernet5
+   no passive-interface Ethernet6
+   network 172.16.0.0/12 area 0.0.0.0
+   max-lsa 12000
+!
+end
+```
+</details>
 
+<details>
+  <summary>DC1-TORSW-02</summary>
 </details>
