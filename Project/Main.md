@@ -1431,6 +1431,199 @@ end
 </details>
 
 <details>
+  <summary>DC1-FW-01</summary>
+
+```
+
+DC1-iFW-01 # config system interface
+
+DC1-iFW-01 (interface) # edit "VLAN1002"
+
+DC1-iFW-01 (VLAN1002) # show
+config system interface
+    edit "VLAN1002"
+        set vdom "root"
+        set vrf 10
+        set ip 10.16.0.1 255.255.255.248
+        set allowaccess ping
+        set alias "VLAN1002"
+        set role dmz
+        set snmp-index 10
+        set interface "port2"
+        set vlanid 1002
+    next
+end
+
+DC1-iFW-01 (VLAN1002) # next
+
+DC1-iFW-01 (interface) # show
+config system interface
+    edit "port1"
+        set vdom "root"
+        set vrf 1
+        set allowaccess ping
+        set type physical
+        set alias "1"
+        set role lan
+        set snmp-index 1
+    next
+    edit "port2"
+        set vdom "root"
+        set vrf 10
+        set allowaccess ping
+        set type physical
+        set alias "TRUNK"
+        set role dmz
+        set snmp-index 2
+    next
+    edit "port3"
+        set vdom "root"
+        set type physical
+        set snmp-index 3
+    next
+    edit "port4"
+        set vdom "root"
+        set ip 10.250.93.110 255.255.255.0
+        set allowaccess ping https ssh http
+        set type physical
+        set snmp-index 4
+    next
+    edit "naf.root"
+        set vdom "root"
+        set type tunnel
+        set src-check disable
+        set snmp-index 5
+    next
+    edit "l2t.root"
+        set vdom "root"
+        set type tunnel
+        set snmp-index 6
+    next
+    edit "ssl.root"
+        set vdom "root"
+        set type tunnel
+        set alias "SSL VPN interface"
+        set snmp-index 7
+    next
+    edit "fortilink"
+        set vdom "root"
+        set fortilink enable
+        set ip 10.255.1.1 255.255.255.0
+        set allowaccess ping fabric
+        set type aggregate
+        set lldp-reception enable
+        set lldp-transmission enable
+        set snmp-index 8
+    next
+    edit "VLAN1001"
+        set vdom "root"
+        set vrf 10
+        set ip 10.0.0.1 255.255.255.248
+        set allowaccess ping
+        set alias "VLAN1001"
+        set device-identification enable
+        set role lan
+        set snmp-index 9
+        set interface "port2"
+        set vlanid 1001
+    next
+    edit "VLAN1002"
+        set vdom "root"
+        set vrf 10
+        set ip 10.16.0.1 255.255.255.248
+        set allowaccess ping
+        set alias "VLAN1002"
+        set role dmz
+        set snmp-index 10
+        set interface "port2"
+        set vlanid 1002
+    next
+end
+
+DC1-iFW-01 (interface) #
+
+C1-iFW-01 (policy) # show
+config firewall policy
+    edit 1
+        set name "PROD-to-VMWARE"
+        set uuid 4d891d0c-492f-51ef-a03d-3a5ee1cd9fe5
+        set srcintf "VLAN1001"
+        set dstintf "VLAN1002"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 2
+        set uuid 52459456-492f-51ef-2018-581b86a94adb
+        set srcintf "VLAN1002"
+        set dstintf "VLAN1001"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set comments " (Copy of PROD-to-VMWARE) (Reverse of PROD-to-VMWARE)"
+    next
+end
+
+DC1-iFW-01 # config router bgp
+
+DC1-iFW-01 (bgp) # show
+config router bgp
+    set as 65011
+    set router-id 10.0.0.1
+    config neighbor
+        edit "10.0.0.3"
+            set soft-reconfiguration enable
+            set as-override enable
+            set distribute-list-in "PROD_IN"
+            set interface "VLAN1001"
+            set remote-as 65001
+        next
+        edit "10.16.0.3"
+            set soft-reconfiguration enable
+            set as-override enable
+            set distribute-list-in "VMWARE_IN"
+            set interface "VLAN1002"
+            set remote-as 65001
+            set update-source "VLAN1002"
+        next
+    end
+    config network6
+        edit 1
+            set prefix6 ::/128
+        next
+    end
+    config redistribute "connected"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "static"
+    end
+    config redistribute "isis"
+    end
+    config redistribute6 "connected"
+    end
+    config redistribute6 "rip"
+    end
+    config redistribute6 "ospf"
+    end
+    config redistribute6 "static"
+    end
+    config redistribute6 "isis"
+    end
+end
+
+
+```
+
+</details>
+
+<details>
   <summary>DC2-TORSW-01</summary>
 </details>
 
@@ -1444,4 +1637,12 @@ end
 
 <details>
   <summary>DC2-TORSW-04</summary>
+</details>
+
+<details>
+  <summary>DC2-CSW-01</summary>
+</details>
+
+<details>
+  <summary>DC2-CSW-02</summary>
 </details>
