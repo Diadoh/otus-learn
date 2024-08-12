@@ -4118,3 +4118,83 @@ VRF info: (vrf in name/id, vrf out name/id)
 
 ```
 </details>
+
+<details>
+  <summary>Spoiler warning</summary>
+
+DC1-iFW-01  
+  ```
+  DC1-iFW-01 # get router info bgp network 
+
+
+
+
+VRF 10 BGP table version is 136, local router ID is 10.0.0.1
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              S Stale
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight RouteTag Path
+*> 10.0.0.0/12      10.0.0.3                 0             0        0 65001 i <-/1>
+*> 10.16.0.0/12     10.16.0.3                0             0        0 65001 i <-/1>
+
+Total number of prefixes 2
+
+
+DC1-iFW-01 # get router info routing-table all 
+Codes: K - kernel, C - connected, S - static, R - RIP, B - BGP
+       O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default
+
+Routing table for VRF=0
+S*      0.0.0.0/0 [10/0] via 10.250.93.1, port4
+C       10.250.93.0/24 is directly connected, port4
+
+Routing table for VRF=10
+B       10.0.0.0/12 [20/0] via 10.0.0.3 (recursive is directly connected, VLAN1001), 07:19:43
+C       10.0.0.0/29 is directly connected, VLAN1001
+B       10.16.0.0/12 [20/0] via 10.16.0.3 (recursive is directly connected, VLAN1002), 07:29:55
+C       10.16.0.0/29 is directly connected, VLAN1002
+  ```
+
+DC1-iFW-01 
+
+```
+DC2-iFW-01 # get router info bgp network
+
+
+VRF 10 BGP table version is 254, local router ID is 10.0.0.9
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              S Stale
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight RouteTag Path
+*> 10.0.0.0/12      10.0.0.11                0             0        0 65001 65001 i <-/1>
+*> 10.16.0.0/12     10.16.0.11               0             0        0 65001 65001 i <-/1>
+
+Total number of prefixes 2
+
+
+DC2-iFW-01 # get router info routing-table all
+Codes: K - kernel, C - connected, S - static, R - RIP, B - BGP
+       O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default
+
+Routing table for VRF=0
+S*      0.0.0.0/0 [10/0] via 10.250.93.1, port4
+C       10.250.93.0/24 is directly connected, port4
+
+Routing table for VRF=10
+B       10.0.0.0/12 [20/0] via 10.0.0.11 (recursive is directly connected, VLAN1001), 07:33:41
+C       10.0.0.8/29 is directly connected, VLAN1001
+B       10.16.0.0/12 [20/0] via 10.16.0.11 (recursive is directly connected, VLAN1002), 07:33:35
+C       10.16.0.8/29 is directly connected, VLAN1002
+```
+  
+</details>
