@@ -3223,12 +3223,258 @@ end
 
 
 <details>
-  <summary>Spoiler warning</summary>
-  
-  Spoiler text. Note that it's important to have a space after the summary tag. You should be able to write any markdown you want inside the `<details>` tag... just make sure you close `<details>` afterward.
+  <summary>DC1-Leaf-01</summary>
   
   ```
+DC1-TORSW-01(config)#show ip route vrf PROD
+
+VRF: PROD
+Codes: C - connected, S - static, K - kernel,
+       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+       N2 - OSPF NSSA external type2, B - Other BGP Routes,
+       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
+       I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
+       A O - OSPF Summary, NG - Nexthop Group Static Route,
+       V - VXLAN Control Service, M - Martian,
+       DH - DHCP client installed default route,
+       DP - Dynamic Policy Route, L - VRF Leaked,
+       G  - gRIBI, RC - Route Cache Route
+
+Gateway of last resort is not set
+
+ C        10.0.0.0/29 is directly connected, Vlan1001
+ B I      10.0.10.13/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.10.14/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.10.23/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.0.10.24/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ C        10.0.10.0/24 is directly connected, Vlan10
+ B I      10.0.11.13/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.11.23/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.0.11.24/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ C        10.0.11.0/24 is directly connected, Vlan11
+ B I      10.0.20.13/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.20.14/32 [200/0] via VTEP 172.16.0.3 VNI 20000 router-mac 50:00:00:d5:5d:c0 local-interface Vxlan1
+ B I      10.0.20.21/32 [200/0] via VTEP 172.22.0.1 VNI 20000 router-mac 50:00:00:15:f4:e8 local-interface Vxlan1
+ B I      10.0.20.23/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.0.20.24/32 [200/0] via VTEP 172.22.0.3 VNI 20000 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ C        10.0.20.0/24 is directly connected, Vlan20
+ A B      10.0.0.0/12 is directly connected, Null0
+ B E      10.16.0.0/12 [200/0] via 10.0.0.1, Vlan1001
+
+DC1-TORSW-01(config)#show ip route vrf VMWARE
+
+VRF: VMWARE
+Codes: C - connected, S - static, K - kernel,
+       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+       N2 - OSPF NSSA external type2, B - Other BGP Routes,
+       B I - iBGP, B E - eBGP, R - RIP, I L1 - IS-IS level 1,
+       I L2 - IS-IS level 2, O3 - OSPFv3, A B - BGP Aggregate,
+       A O - OSPF Summary, NG - Nexthop Group Static Route,
+       V - VXLAN Control Service, M - Martian,
+       DH - DHCP client installed default route,
+       DP - Dynamic Policy Route, L - VRF Leaked,
+       G  - gRIBI, RC - Route Cache Route
+
+Gateway of last resort is not set
+
+ B I      10.0.101.0/24 [200/0] via VTEP 172.16.0.4 VNI 20001 router-mac 50:00:00:03:37:66 local-interface Vxlan1
+ B E      10.0.0.0/12 [200/0] via 10.16.0.1, Vlan1002
+ C        10.16.0.0/29 is directly connected, Vlan1002
+ C        10.16.101.0/24 is directly connected, Vlan101
+ B I      10.16.102.22/32 [200/0] via VTEP 172.22.0.1 VNI 20001 router-mac 50:00:00:15:f4:e8 local-interface Vxlan1
+ B I      10.16.102.23/32 [200/0] via VTEP 172.22.0.3 VNI 20001 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.16.102.24/32 [200/0] via VTEP 172.22.0.3 VNI 20001 router-mac 50:00:00:f6:ad:37 local-interface Vxlan1
+ B I      10.16.102.0/24 [200/0] via VTEP 172.22.0.4 VNI 20001 router-mac 50:00:00:1b:5e:8d local-interface Vxlan1
+ B I      10.16.103.0/24 [200/0] via VTEP 172.19.0.1 VNI 20001 router-mac 50:00:00:88:2f:f3 local-interface Vxlan1
+ A B      10.16.0.0/12 is directly connected, Null0
+
+DC1-TORSW-01(config)#show bgp evpn route-type ethernet-segment
+BGP routing table information for VRF default
+Router identifier 172.16.0.1, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >      RD: 172.16.0.1:1 ethernet-segment 0001:0012:aaaa:aaaa:0010 172.16.0.1
+                                 -                     -       -       0       i
+ * >Ec    RD: 172.16.0.2:1 ethernet-segment 0001:0012:aaaa:aaaa:0010 172.16.0.2
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ *  ec    RD: 172.16.0.2:1 ethernet-segment 0001:0012:aaaa:aaaa:0010 172.16.0.2
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ * >      RD: 172.16.0.1:1 ethernet-segment 0001:0012:aaaa:aaaa:0020 172.16.0.1
+                                 -                     -       -       0       i
+ * >Ec    RD: 172.16.0.2:1 ethernet-segment 0001:0012:aaaa:aaaa:0020 172.16.0.2
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ *  ec    RD: 172.16.0.2:1 ethernet-segment 0001:0012:aaaa:aaaa:0020 172.16.0.2
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ * >Ec    RD: 172.16.0.3:1 ethernet-segment 0001:0034:aaaa:aaaa:0010 172.16.0.3
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 172.16.0.3:1 ethernet-segment 0001:0034:aaaa:aaaa:0010 172.16.0.3
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 172.16.0.4:1 ethernet-segment 0001:0034:aaaa:aaaa:0010 172.16.0.4
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.1
+ *  ec    RD: 172.16.0.4:1 ethernet-segment 0001:0034:aaaa:aaaa:0010 172.16.0.4
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.1
+ * >Ec    RD: 172.16.0.3:1 ethernet-segment 0001:0034:aaaa:aaaa:0020 172.16.0.3
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ *  ec    RD: 172.16.0.3:1 ethernet-segment 0001:0034:aaaa:aaaa:0020 172.16.0.3
+                                 172.16.0.3            -       100     0       i Or-ID: 172.16.0.3 C-LST: 0.0.0.1
+ * >Ec    RD: 172.16.0.4:1 ethernet-segment 0001:0034:aaaa:aaaa:0020 172.16.0.4
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.1
+ *  ec    RD: 172.16.0.4:1 ethernet-segment 0001:0034:aaaa:aaaa:0020 172.16.0.4
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.1
+ * >Ec    RD: 172.22.0.1:1 ethernet-segment 0002:0012:aaaa:aaaa:0010 172.22.0.1
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 172.22.0.1:1 ethernet-segment 0002:0012:aaaa:aaaa:0010 172.22.0.1
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 172.22.0.2:1 ethernet-segment 0002:0012:aaaa:aaaa:0010 172.22.0.2
+                                 172.22.0.2            -       100     0       i Or-ID: 172.22.0.2 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 172.22.0.2:1 ethernet-segment 0002:0012:aaaa:aaaa:0010 172.22.0.2
+                                 172.22.0.2            -       100     0       i Or-ID: 172.22.0.2 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 172.22.0.1:1 ethernet-segment 0002:0012:aaaa:aaaa:0020 172.22.0.1
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 172.22.0.1:1 ethernet-segment 0002:0012:aaaa:aaaa:0020 172.22.0.1
+                                 172.22.0.1            -       100     0       i Or-ID: 172.22.0.1 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 172.22.0.2:1 ethernet-segment 0002:0012:aaaa:aaaa:0020 172.22.0.2
+                                 172.22.0.2            -       100     0       i Or-ID: 172.22.0.2 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 172.22.0.2:1 ethernet-segment 0002:0012:aaaa:aaaa:0020 172.22.0.2
+                                 172.22.0.2            -       100     0       i Or-ID: 172.22.0.2 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 172.22.0.3:1 ethernet-segment 0002:0034:aaaa:aaaa:0010 172.22.0.3
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 172.22.0.3:1 ethernet-segment 0002:0034:aaaa:aaaa:0010 172.22.0.3
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0010 172.22.0.4
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0010 172.22.0.4
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 172.22.0.3:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.3
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 172.22.0.3:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.3
+                                 172.22.0.3            -       100     0       i Or-ID: 172.22.0.3 C-LST: 0.0.0.1 0.0.0.2
+ * >Ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.4
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.1 0.0.0.2
+ *  ec    RD: 172.22.0.4:1 ethernet-segment 0002:0034:aaaa:aaaa:0020 172.22.0.4
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.1 0.0.0.2
+
+DC1-TORSW-01(config)#show bgp evpn route-type ip-prefix ipv4
+BGP routing table information for VRF default
+Router identifier 172.16.0.1, local AS number 65001
+Route status codes: * - valid, > - active, S - Stale, E - ECMP head, e - ECMP
+                    c - Contributing to ECMP, % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.0.0.0/12
+                                 -                     -       -       0       i
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.0.0.0/12
+                                 -                     -       100     0       65011 65011 i
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.0.10.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.0.10.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.0.11.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.0.11.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.0.20.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ *        RD: 10.1.1.0:20000 ip-prefix 10.0.20.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.0.101.0/24
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.1
+ *        RD: 10.1.1.0:20001 ip-prefix 10.0.101.0/24
+                                 172.16.0.4            -       100     0       i Or-ID: 172.16.0.4 C-LST: 0.0.0.1
+ * >      RD: 10.1.1.0:20000 ip-prefix 10.16.0.0/12
+                                 -                     -       100     0       65011 65011 i
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.16.0.0/12
+                                 -                     -       -       0       i
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.16.101.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ *        RD: 10.1.1.0:20001 ip-prefix 10.16.101.0/24
+                                 172.16.0.2            -       100     0       i Or-ID: 172.16.0.2 C-LST: 0.0.0.1
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.16.102.0/24
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.1 0.0.0.2
+ *        RD: 10.1.1.0:20001 ip-prefix 10.16.102.0/24
+                                 172.22.0.4            -       100     0       i Or-ID: 172.22.0.4 C-LST: 0.0.0.1 0.0.0.2
+ * >      RD: 10.1.1.0:20001 ip-prefix 10.16.103.0/24
+                                 172.19.0.1            -       100     0       i Or-ID: 172.19.0.1 C-LST: 0.0.0.1
+ *        RD: 10.1.1.0:20001 ip-prefix 10.16.103.0/24
+                                 172.19.0.1            -       100     0       i Or-ID: 172.19.0.1 C-LST: 0.0.0.1
+
+
 
   ```
+  
+</details>
+
+
+
+<details>
+  <summary>ESXi Hosts</summary>
+  
+
+ICMP к хосту DC1-ESXi-04 vrf PROD
+
+```
+DC2-ESXi-04#ping vrf VMWARE-102 10.0.10.14
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.10.14, timeout is 2 seconds:
+!!!!!
+```
+
+ICMP к хосту DC1-ESXi-04 vrf PROD
+
+```
+DC1-ESXi-04#ping vrf PROD-10 10.0.20.14
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.20.14, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 13/24/58 ms
+```
+
+ICMP к хосту DC1-ESXi-01 vrf VMWARE
+
+```
+DC1-ESXi-04#ping vrf PROD-10 10.16.101.11
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.16.101.11, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 55/358/1399 ms
+```
+
+ICMP к хосту DC2-ESXi-04 vrf PROD
+
+```
+DC1-ESXi-04#ping vrf PROD-10 10.0.20.24
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.20.24, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 45/80/156 ms
+```
+
+ICMP к хосту DC1-ESXi-01 vrf VMWARE
+
+```
+DC1-ESXi-01#ping vrf PROD-10 10.16.101.11
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.16.101.11, timeout is 2 seconds:
+!!!!!
+```
+
+ICMP к хосту DC2-ESXi-01 vrf VMWARE
+
+```
+DC1-ESXi-01#ping vrf PROD-10 10.16.102.21
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.16.102.21, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 63/142/268 ms
+
+```
   
 </details>
