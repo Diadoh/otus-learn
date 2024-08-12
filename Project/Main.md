@@ -3412,7 +3412,16 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
   
 </details>
 
-
+<details>
+  <summary>Spoiler warning</summary>
+  
+  Spoiler text. Note that it's important to have a space after the summary tag. You should be able to write any markdown you want inside the `<details>` tag... just make sure you close `<details>` afterward.
+  
+  ```javascript
+  console.log("I'm a code block!");
+  ```
+  
+</details>
 
 <details>
   <summary>ESXi Hosts</summary>
@@ -3476,5 +3485,49 @@ Sending 5, 100-byte ICMP Echos to 10.16.102.21, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 63/142/268 ms
 
 ```
+  
+</details>
+
+<details>
+  <summary>Witness Host</summary>
+     
+  ```
+Witness_Host#ping 10.0.10.13
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.10.13, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 108/209/351 ms
+
+Witness_Host#ping 10.0.10.11
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.10.11, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 66/221/615 ms
+
+Witness_Host#ping 10.16.101.12
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.16.101.12, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 80/555/1171 ms
+
+Witness_Host#ping 10.16.102.23
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.16.102.23, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 78/129/184 ms
+
+Witness_Host#ping 10.0.20.11
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.20.11, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 62/274/875 ms
+
+Witness_Host#ping 10.0.20.21
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.0.20.21, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 73/128/200 ms
+
+  ```
   
 </details>
