@@ -198,3 +198,9 @@
 |-|Назначение|Модель|Порты|Firewall Latency|Firewall Throughput|Кол-во|
 |3|Firewall|FortiGate FG-600F|4x 25G SFP28, 4x 10GE SFP+ , 8x GE SFP, 18 x GE RJ45|4.12 μs / 2.5 μs 7|139 Gbps|2|
 
+### Конфигурации
+
+<details>
+  <summary>Spoiler warning</summary>
+
+</details>
