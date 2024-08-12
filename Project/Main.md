@@ -198,8 +198,8 @@
 |-|Назначение|Модель|Порты|Firewall Latency|Firewall Throughput|Кол-во|
 |3|Firewall|FortiGate FG-600F|4x 25G SFP28, 4x 10GE SFP+ , 8x GE SFP, 18 x GE RJ45|4.12 μs / 2.5 μs 7|139 Gbps|2|
 
-### Конфигурации
-### Data Center #1
+### Конфигурации:
+- #### Data Center #1
 <details>
   <summary>DC1-TORSW-01</summary>
   
@@ -1648,7 +1648,7 @@ end
 
 </details>
 
-### Data Center #2
+- #### Data Center #2
 
 <details>
   <summary>DC2-TORSW-01</summary>
@@ -3075,7 +3075,7 @@ end
 
 </details>
 
-### Campus
+- #### Campus
 
 <details>
   <summary>CH1-CSW-01</summary>
