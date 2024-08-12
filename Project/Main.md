@@ -157,6 +157,6 @@
 
 ### Общая схема организации VMWare Stretched cluster
 
-![pic.jpg](pic.jpg)
+![VMWARE1.png](VMWARE1.png)
 
 Для работы VMWare Stretched cluster требуется 2-е площадки где будет распологаться обрудование и Witness (Свидетель).
