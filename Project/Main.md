@@ -3075,6 +3075,153 @@ end
 
 </details>
 
+### Campus
+
+<details>
+  <summary>CH1-CSW-01</summary>
+  
+```
+CH1-CSW-01(config)#sh run
+! Command: show running-config
+! device: CH1-CSW-01 (vEOS-lab, EOS-4.29.2F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname CH1-CSW-01
+!
+spanning-tree mode mstp
+!
+vlan 103
+   name VMWARE
+!
+vrf instance VMWARE
+!
+interface Ethernet1
+   description ### Link to DC1-TORSW-01 int Eth5 ###
+   mtu 9214
+   no switchport
+   ip address 172.18.0.17/31
+   bfd interval 1000 min-rx 1000 multiplier 25
+   no ip ospf neighbor bfd
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf message-digest-key 1 sha512 7 VoOL9kzywbE=
+!
+interface Ethernet2
+   description ### Link to DC2-TORSW-01 int Eth5 ###
+   mtu 9214
+   no switchport
+   ip address 172.23.0.17/31
+   bfd interval 1000 min-rx 1000 multiplier 25
+   no ip ospf neighbor bfd
+   ip ospf network point-to-point
+   ip ospf authentication message-digest
+   ip ospf message-digest-key 1 sha512 7 Vvfzqj00sns=
+!
+interface Ethernet3
+   description ### Link to Witness ###
+   mtu 9164
+   switchport trunk allowed vlan 103
+   switchport mode trunk
+   no ip ospf neighbor bfd
+!
+interface Ethernet4
+   mtu 9164
+   no ip ospf neighbor bfd
+!
+interface Ethernet5
+   mtu 9164
+   no ip ospf neighbor bfd
+   ip ospf message-digest-key 1 sha512 7 VvYj7xR9hxZ85W1CvCZOUw==
+!
+interface Ethernet6
+   mtu 9164
+   no ip ospf neighbor bfd
+!
+interface Ethernet7
+   mtu 9164
+   no ip ospf neighbor bfd
+!
+interface Ethernet8
+   mtu 9164
+   no ip ospf neighbor bfd
+!
+interface Ethernet9
+   mtu 9164
+   no ip ospf neighbor bfd
+!
+interface Loopback1
+   ip address 172.19.0.1/32
+!
+interface Management1
+!
+interface Vlan103
+   description ### VMWARE ###
+   mtu 9164
+   vrf VMWARE
+   ip address 10.16.103.1/24
+!
+interface Vlan193
+!
+interface Vxlan1
+   vxlan source-interface Loopback1
+   vxlan udp-port 4789
+   vxlan vrf VMWARE vni 20001
+!
+ip virtual-router mac-address 00:00:00:65:00:10
+!
+ip routing
+ip routing vrf VMWARE
+!
+router bgp 65001
+   router-id 172.19.0.1
+   timers bgp 10 30
+   neighbor RR peer group
+   neighbor RR remote-as 65001
+   neighbor RR update-source Loopback1
+   neighbor RR send-community
+   neighbor 172.17.0.1 peer group RR
+   neighbor 172.17.0.2 peer group RR
+   neighbor 172.21.0.1 peer group RR
+   neighbor 172.21.0.2 peer group RR
+   !
+   address-family evpn
+      neighbor RR activate
+   !
+   address-family ipv4
+      no neighbor RR activate
+   !
+   vrf VMWARE
+      rd 10.1.1.0:20001
+      route-target import 65001:20001
+      route-target export 65001:20001
+      redistribute connected
+!
+router ospf 1
+   router-id 172.19.0.1
+   passive-interface default
+   no passive-interface Ethernet1
+   no passive-interface Ethernet2
+   network 172.16.0.0/12 area 0.0.0.0
+   max-lsa 12000
+!
+end
+
+```
+  
+</details>
+
+
+
+### Проверки
+
+
 <details>
   <summary>Spoiler warning</summary>
   
