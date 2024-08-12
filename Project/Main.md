@@ -3223,7 +3223,7 @@ end
 
 
 <details>
-  <summary>DC1-Leaf-01</summary>
+  <summary>DC1-TORSW-01</summary>
   
   ```
 DC1-TORSW-01(config)#show ip route vrf PROD
@@ -4085,6 +4085,7 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 73/128/200 ms
 
 <details>
   <summary>Трассировка при отказе DC1-FW-01 </summary>
+
 
 Трассировка в сторону vrf PROD - DC1-iFW-01 включен
 
