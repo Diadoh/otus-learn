@@ -202,7 +202,9 @@
 
 <details>
   <summary>DC1-TORSW-01</summary>
+  
 ```
+
 DC1-TORSW-01(config-router-bgp)#sh run
 ! Command: show running-config
 ! device: DC1-TORSW-01 (vEOS-lab, EOS-4.29.2F)
@@ -446,7 +448,9 @@ router ospf 1
    max-lsa 12000
 !
 end
+
 ```
+
 </details>
 
 <details>
