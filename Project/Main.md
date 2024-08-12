@@ -194,10 +194,7 @@
 |-|Назначение|Модель|Порты|Port-to-port Latency|Switching Capacity|Кол-во|
 |:----|:----|:----|:----|:----|:----|:----|
 |1|Core Switch(Spine)|Arista 7170-32C|32 100G QSFP|Under 1usec|6.4 Tbps|4|
-|2|Top of Rack Switches (Leaf)|Arista 7135LB-48Y4C|48 SFP28
-4 QSFP100|From 5ns|3.2 Tbps|9|
+|2|Top of Rack Switches (Leaf)|Arista 7135LB-48Y4C|48 SFP28, 4 QSFP100|From 5ns|3.2 Tbps|9|
 |-|Назначение|Модель|Порты|Firewall Latency|Firewall Throughput|Кол-во|
-|3|Firewall|FortiGate FG-600F|4x 25G SFP28, 4x 10GE
-SFP+ , 8x GE SFP, 18 x
-GE RJ45|4.12 μs / 2.5 μs 7|139 Gbps|2|
+|3|Firewall|FortiGate FG-600F|4x 25G SFP28, 4x 10GE SFP+ , 8x GE SFP, 18 x GE RJ45|4.12 μs / 2.5 μs 7|139 Gbps|2|
 
