@@ -155,3 +155,8 @@
 | DC2-ESXi-04  | VLAN 102  | 10.16.102.24 | vrf VMWARE  |
 | Witness Host | VLAN 103  | 10.16.103.10 | vrf VMWARE  |
 
+### Общая схема организации VMWare Stretched cluster
+
+![pic.jpg](pic.jpg)
+
+Для работы VMWare Stretched cluster требуется 2-е площадки где будет распологаться обрудование и Witness (Свидетель).
